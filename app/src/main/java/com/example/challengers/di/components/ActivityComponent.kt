@@ -2,6 +2,7 @@ package com.example.challengers.di.components
 
 import com.example.challengers.di.ActivityScope
 import com.example.challengers.di.modules.ActivityModule
+import com.example.challengers.ui.splash.SplashActivity
 import dagger.Component
 
 /**
@@ -14,7 +15,7 @@ import dagger.Component
 )
 interface ActivityComponent {
 
-    //fun inject(activity: SplashActivity)
+    fun inject(activity: SplashActivity)
 
     //fun inject(activity: LoginActivity)
 

@@ -1,6 +1,6 @@
 package com.example.challengers
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.example.challengers.di.components.ApplicationComponent
 import com.example.challengers.di.components.DaggerApplicationComponent
 import com.example.challengers.di.modules.ApplicationModule
@@ -8,7 +8,7 @@ import com.example.challengers.di.modules.ApplicationModule
 /**
  * Created by RavindraP on 25 June 2020
  */
-class BountyApplication : Application() {
+class BountyApplication : MultiDexApplication() {
 
     lateinit var applicationComponent: ApplicationComponent
 

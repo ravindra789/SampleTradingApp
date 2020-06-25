@@ -11,6 +11,8 @@ import javax.inject.Singleton
 @Singleton
 class UserRepository @Inject constructor(
     private val networkService: NetworkService,
-    private val userPreferences: UserPreferences
-) {
+    private val userPreferences: UserPreferences) {
+
+    private var userId: Long? = null
+
 }

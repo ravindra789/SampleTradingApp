@@ -4,8 +4,12 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.challengers.BountyApplication
+import com.example.challengers.data.remote.NetworkService
+import com.example.challengers.data.repository.UserRepository
 import com.example.challengers.di.ApplicationContext
 import com.example.challengers.di.modules.ApplicationModule
+import com.example.challengers.utils.network.NetworkHelper
+import com.example.challengers.utils.rx.SchedulerProvider
 import dagger.Component
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
@@ -32,13 +36,13 @@ interface ApplicationComponent {
      * This method will be called when NetworkService is injected in DummyViewModel.
      * Also, in ActivityComponent you can find dependencies = [ApplicationComponent::class] to link this relationship
      */
-    //fun getNetworkService(): NetworkService
+    fun getNetworkService(): NetworkService
 
     //fun getDatabaseService(): DatabaseService
 
     fun getSharedPreferences(): SharedPreferences
 
-    //fun getNetworkHelper(): NetworkHelper
+    fun getNetworkHelper(): NetworkHelper
 
     /**---------------------------------------------------------------------------
      * Dagger will internally create UserRepository instance using constructor injection.
@@ -50,9 +54,9 @@ interface ApplicationComponent {
      * So, Dagger will be able to create an instance of UserRepository by its own using constructor injection
      *---------------------------------------------------------------------------------
      */
-    //fun getUserRepository(): UserRepository
+    fun getUserRepository(): UserRepository
 
-    //fun getSchedulerProvider(): SchedulerProvider
+    fun getSchedulerProvider(): SchedulerProvider
 
     fun getCompositeDisposable(): CompositeDisposable
 
