@@ -18,5 +18,12 @@
     <string name="email_field_invalid">Not a valid email</string>
     <string name="password_field_small_length">Password less than 6 digits</string>
     <string name="login_button_text">Login</string>
+    <string name="prompt_user_name">User Name</string>
+    <string name="prompt_password">Password</string>
+    <string name="btn_submit">Submit</string>
+    <string name="no_data">NO DATA</string>
+    <string name="more">more</string>
+    <string name="log_out">Log Out</string>
+    <string name="log_in">Login</string>
 
 </resources>

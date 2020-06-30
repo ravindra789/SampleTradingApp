@@ -8,4 +8,38 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GreenButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/green_gradient_background_standard_button</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="WhiteToolBarTitleMedium">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:layout_height">@dimen/standard_height_of_et_inside_til</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:backgroundTint">@color/colorPrimaryGreyOPACITY40</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="EditText.Hint.Blue" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:textColor">@color/hint_focused_text_color</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+    </style>
+
 </resources>
