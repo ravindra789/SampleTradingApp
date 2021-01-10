@@ -18,11 +18,12 @@ class CompanyDetailsChartFragmentViewModel(
     private val userRepository: UserRepository,
     private val companyDetailsRepository: CompanyDetailsRepository
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper) {
+
     override fun onCreate() {}
 
     val historicalData: MutableLiveData<JsonArray> = MutableLiveData()
 
-    fun getHistoricalData(interval: Int){
+    fun getHistoricalData(interval: Int) {
         compositeDisposable.add(
             companyDetailsRepository
                 .getHistoryData(interval)

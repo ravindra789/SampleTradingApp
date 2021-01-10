@@ -243,15 +243,11 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
 
     private fun addDynamicEntryToChart(open: Float) {
         val data = mp_chart.data
-
         val randomDataSetIndex = (Math.random() * data.dataSetCount).toInt()
         val randomSet = data.getDataSetByIndex(randomDataSetIndex)
-
         data.addEntry(Entry(randomSet.entryCount.toFloat(), open), randomDataSetIndex)
-
         data.notifyDataChanged()
         mp_chart.notifyDataSetChanged()
-
         mp_chart.setVisibleXRangeMaximum(12f)
         mp_chart.moveViewTo(data.entryCount.toFloat(), 50f, YAxis.AxisDependency.LEFT)
     }
@@ -267,7 +263,7 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
                 val data = it[0]
                 val result = data.toString().split(",").map { it.trim() }
                 val open = result[1].toFloat()
-                txt_company_price.text = "$${open}"
+                txt_company_price.text = String.format(getString(R.string.company_price), open)
                 if (isLiveView && isHistoricalDataFetched) addDynamicEntryToChart(open)
 
                 mainScope.launch {

@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_10dp"
                 android:padding="@dimen/dimen_8dp"
-                android:text="Live"
+                android:text="@string/live"
                 android:textColor="@color/black"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -146,7 +146,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/day_high"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
 
@@ -156,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_marginEnd="@dimen/dimen_8dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintRight_toLeftOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 tools:text="$200" />
@@ -168,7 +169,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/day_low"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintLeft_toRightOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
 
@@ -178,6 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_marginEnd="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 tools:text="$100" />
@@ -209,7 +211,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/day_open"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -218,6 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintEnd_toEndOf="@+id/txt_day_high_value"
                 app:layout_constraintTop_toBottomOf="@+id/view2"
                 tools:text="$150.25" />
@@ -229,7 +232,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/day_close"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_day_low"
                 app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -239,6 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_marginEnd="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view2"
                 tools:text="$100.20" />
@@ -263,7 +267,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/avg_volume"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -272,6 +276,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintEnd_toEndOf="@+id/txt_day_high_value"
                 app:layout_constraintTop_toBottomOf="@+id/view3"
                 tools:text="50.20" />
@@ -283,7 +288,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/volume"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_day_low"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -293,6 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_marginEnd="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3"
                 tools:text="1000" />
@@ -317,7 +323,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/_52wk_high"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -326,6 +332,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintEnd_toEndOf="@+id/txt_day_high_value"
                 app:layout_constraintTop_toBottomOf="@+id/view4"
                 tools:text="$453.01" />
@@ -337,7 +344,7 @@
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/_52wk_low"
-                android:textSize="@dimen/dimen_12sp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_day_low"
                 app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -347,6 +354,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_marginEnd="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view4"
                 tools:text="$299.42" />
@@ -380,8 +388,8 @@
         android:layout_marginEnd="@dimen/dimen_8dp"
         android:layout_marginBottom="@dimen/dimen_8dp"
         android:background="@drawable/green_gradient_background_standard_button"
-        android:text="@string/sell"
         android:fontFamily="@font/poppins_bold"
+        android:text="@string/sell"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -396,8 +404,8 @@
         android:layout_marginEnd="@dimen/dimen_10dp"
         android:layout_marginBottom="@dimen/dimen_8dp"
         android:background="@drawable/green_gradient_background_standard_button"
-        android:text="@string/buy"
         android:fontFamily="@font/poppins_bold"
+        android:text="@string/buy"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
