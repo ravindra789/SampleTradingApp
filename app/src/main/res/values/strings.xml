@@ -41,5 +41,13 @@
     <string name="_52wk_low">52wk Low</string>
     <string name="sell">SELL</string>
     <string name="buy">BUY</string>
+    <string name="aut_connected">Auto Connected</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="auto_disconnected">Auto Disconnected</string>
+    <string name="data">data</string>
+    <string name="error">error</string>
+    <string name="state">state</string>
+    <string name="unsub">unsub</string>
+    <string name="sub">sub</string>
 
 </resources>

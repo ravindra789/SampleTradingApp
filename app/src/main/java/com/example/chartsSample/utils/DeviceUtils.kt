@@ -19,6 +19,7 @@ object DeviceUtils {
     const val INTERVAL_SEVEN = 7
     const val INTERVAL_NINE = 9
     private const val SOCKET_URI = "http://kaboom.rksv.net"
+    const val SOCKET_NAME_SPACE = "/watch"
 
     fun getSocketInstance(): Manager? {
         return try {
@@ -33,5 +34,4 @@ object DeviceUtils {
         val sdf = SimpleDateFormat("dd-MMM")
         return sdf.format(date)
     }
-
 }

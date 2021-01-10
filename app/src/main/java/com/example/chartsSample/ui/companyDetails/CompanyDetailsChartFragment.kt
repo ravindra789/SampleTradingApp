@@ -16,6 +16,7 @@ import com.example.chartsSample.utils.DeviceUtils.INTERVAL_NINE
 import com.example.chartsSample.utils.DeviceUtils.INTERVAL_ONE
 import com.example.chartsSample.utils.DeviceUtils.INTERVAL_SEVEN
 import com.example.chartsSample.utils.DeviceUtils.INTERVAL_THREE
+import com.example.chartsSample.utils.DeviceUtils.SOCKET_NAME_SPACE
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
@@ -49,6 +50,8 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
     private var mSocket: Socket? = null
     private var mLastSelectedTagView: AppCompatTextView? = null
     private val mainScope = MainScope()
+    private var isLiveView = false
+    private var isHistoricalDataFetched = false
 
     override fun provideLayoutId(): Int = R.layout.fragment_company_details_chart
 
@@ -58,12 +61,12 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
 
     override fun setupView(view: View) {
         val manager = DeviceUtils.getSocketInstance()
-        mSocket = manager?.socket("/watch")
+        mSocket = manager?.socket(SOCKET_NAME_SPACE)
         setSocketEvents()
         mSocket?.connect()
         setData()
         setChart()
-        callTaggedSetOfDara(txt_one_day, 1)
+        callTaggedSetOfDara(txt_one_day, INTERVAL_ONE)
         setClickListeners()
     }
 
@@ -134,9 +137,15 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
         txt_one_year.setOnClickListener {
             callTaggedSetOfDara(txt_one_year, INTERVAL_NINE)
         }
+        txt_live.setOnClickListener {
+            callTaggedSetOfDara(txt_live, INTERVAL_ONE)
+        }
     }
 
     private fun callTaggedSetOfDara(tagView: AppCompatTextView?, interval: Int) {
+        isLiveView = tagView == txt_live
+
+        isHistoricalDataFetched = false
         if (mLastSelectedTagView == null) {
             mLastSelectedTagView = tagView
             mLastSelectedTagView?.setBackgroundColor(
@@ -170,6 +179,7 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
         super.setupObservers()
         viewModel.historicalData.observe(this, Observer { jsonArray ->
             jsonArray?.let { jsonArrayItem ->
+                isHistoricalDataFetched = true
                 drawLineChart(jsonArrayItem)
             }
         })
@@ -199,7 +209,7 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
                 for ((position, item) in xAxisArrayList.withIndex()) {
-                    if(position.toFloat() == value)
+                    if (position.toFloat() == value)
                         return item
                 }
                 return ""
@@ -228,7 +238,22 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
         lineData.addDataSet(set)
         mp_chart.data = lineData
         mp_chart.setVisibleXRangeMaximum(12f)
-        mp_chart.moveViewTo((lineData.entryCount - 7).toFloat(), 50f, YAxis.AxisDependency.RIGHT)
+        mp_chart.moveViewTo((lineData.entryCount).toFloat(), 50f, YAxis.AxisDependency.RIGHT)
+    }
+
+    private fun addDynamicEntryToChart(open: Float) {
+        val data = mp_chart.data
+
+        val randomDataSetIndex = (Math.random() * data.dataSetCount).toInt()
+        val randomSet = data.getDataSetByIndex(randomDataSetIndex)
+
+        data.addEntry(Entry(randomSet.entryCount.toFloat(), open), randomDataSetIndex)
+
+        data.notifyDataChanged()
+        mp_chart.notifyDataSetChanged()
+
+        mp_chart.setVisibleXRangeMaximum(12f)
+        mp_chart.moveViewTo(data.entryCount.toFloat(), 50f, YAxis.AxisDependency.LEFT)
     }
 
     private fun setSocketEvents() {
@@ -237,12 +262,13 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
         mSocket?.on(Socket.EVENT_CONNECT_ERROR, onConnectError)
         mSocket?.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError)
 
-        mSocket?.on("data") {
+        mSocket?.on(getString(R.string.data)) {
             activity?.runOnUiThread {
                 val data = it[0]
                 val result = data.toString().split(",").map { it.trim() }
                 val open = result[1].toFloat()
-                txt_company_price.text = open?.toString()
+                txt_company_price.text = "$${open}"
+                if (isLiveView && isHistoricalDataFetched) addDynamicEntryToChart(open)
 
                 mainScope.launch {
                     val ack = it[1]
@@ -252,44 +278,45 @@ class CompanyDetailsChartFragment : BaseFragment<CompanyDetailsChartFragmentView
             }
         }
 
-        mSocket?.on("error") {
+        mSocket?.on(getString(R.string.error)) {
             activity?.runOnUiThread {
-                val data = it[0]
-                Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
             }
         }
 
         val subEmit = JSONObject()
-        subEmit.put("state", true)
-        mSocket?.emit("sub", subEmit)
+        subEmit.put(getString(R.string.state), true)
+        mSocket?.emit(getString(R.string.sub), subEmit)
     }
 
     private val onConnect: Emitter.Listener = Emitter.Listener {
         activity?.runOnUiThread {
-            Toast.makeText(activity, "Auto Connected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.aut_connected), Toast.LENGTH_SHORT).show()
         }
     }
 
     private val onConnectError: Emitter.Listener = Emitter.Listener {
         activity?.runOnUiThread {
-            Toast.makeText(activity, "Connection Error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.connection_error), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
     private val onDisconnect: Emitter.Listener = Emitter.Listener {
         activity?.runOnUiThread {
-            Toast.makeText(activity, "Auto Disconnected ${it}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getString(R.string.auto_disconnected), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         val unSubEmit = JSONObject()
-        unSubEmit.put("state", false)
-        mSocket?.emit("unsub", unSubEmit)
+        unSubEmit.put(getString(R.string.state), false)
+        mSocket?.emit(getString(R.string.unsub), unSubEmit)
         mSocket?.disconnect()
-        mSocket?.off("data")
-        mSocket?.off("error")
+        mSocket?.off(getString(R.string.data))
+        mSocket?.off(getString(R.string.error))
         mainScope.cancel()
     }
 }
