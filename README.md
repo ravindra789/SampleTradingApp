@@ -1,2 +1,2 @@
 # SampleChatApp
-Kaboom Sample Chat app.
+Kaboom Sample Trading app.
