@@ -5,10 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -55,6 +54,12 @@ ext {
     // Dagger
     dagger_version = '2.21'
 
+    // Dagger
+    mp_chart = 'v3.1.0'
+
+    // Socket IO
+    socket_io = '0.6.0'
+
     // Tests
     junit_version = '4.12'
     espresso_version = '3.2.0'
@@ -69,7 +74,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url 'https://jitpack.io' }
     }
 }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Challengers</string>
+    <string name="app_name">Charts</string>
 
     <string name="network_connection_error">Internet connection lost, please retry again</string>
     <string name="network_default_error">Something wrong happened, please retry again</string>
@@ -25,5 +25,21 @@
     <string name="more">more</string>
     <string name="log_out">Log Out</string>
     <string name="log_in">Login</string>
+    <string name="cake">CAKE</string>
+    <string name="_1d">1D</string>
+    <string name="_1m">1M</string>
+    <string name="_3m">3M</string>
+    <string name="ytd">YTD</string>
+    <string name="_1y">1Y</string>
+    <string name="day_high">Day High</string>
+    <string name="day_low">Day Low</string>
+    <string name="day_open">Day Open</string>
+    <string name="day_close">Day Close</string>
+    <string name="avg_volume">Avg. Volume</string>
+    <string name="volume">Volume</string>
+    <string name="_52wk_high">52wk High</string>
+    <string name="_52wk_low">52wk Low</string>
+    <string name="sell">SELL</string>
+    <string name="buy">BUY</string>
 
 </resources>

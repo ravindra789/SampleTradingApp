@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.talentHunters">
+    package="com.example.chartsSample">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.talentHunters.TalentHunterApplication"
+        android:name="com.example.chartsSample.ChartsSampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.splash.SplashActivity">
+        android:theme="@style/Theme.Design.Light.NoActionBar">
+        <activity android:name="com.example.chartsSample.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,19 +21,17 @@
             </intent-filter>
         </activity>
 
-    <activity
-        android:name=".ui.login.LoginActivity"
-        android:label="Login"
-        android:screenOrientation="portrait"
-        tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.example.chartsSample.ui.login.LoginActivity"
+            android:label="Login"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
-    <activity
-        android:name=".ui.main.MainActivity"
-        android:label="Main"
-        android:screenOrientation="portrait"
-        tools:ignore="LockedOrientationActivity" />
-
-
+        <activity
+            android:name="com.example.chartsSample.ui.main.MainActivity"
+            android:label="Main"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>
