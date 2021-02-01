@@ -1,2 +1,2 @@
 # SampleTradingApp
-Kaboom Sample Trading app.
+Kaboom Sample Trading app for upstox.
